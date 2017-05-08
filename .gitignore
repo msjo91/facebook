@@ -1,7 +1,9 @@
 ### Project Custom ###
+__dev*/
 .conf-secret/
 .idea/
-images/
+*.sqlite3
+*.sqlite
 *.scss
 facebook_env
 
