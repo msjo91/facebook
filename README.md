@@ -1,7 +1,9 @@
 # Facebook OAuth Login
 Practice login with Facebook account
 
-Facebook Login page: https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
+Facebook Login Manual Build: https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow  
+Facebook Access Token: https://developers.facebook.com/docs/facebook-login/access-tokens  
+Facebook Graph API: https://developers.facebook.com/docs/graph-api
 
 ### Framework
 Django
