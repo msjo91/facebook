@@ -56,6 +56,7 @@ def login_facebook(request):
         dict_debug_token = r.jsoin()
         USER_ID = dict_debug_token['data']['user_id']
 
-        # Authenticate with only FB ID
+        # Authenticate with only FB ID then return to index page
         user = authenticate(facebook_id=USER_ID)
         login(request, user)
+        return redirect('index')
