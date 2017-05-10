@@ -53,7 +53,7 @@ def login_facebook(request):
             'access_token': APP_ACCESS_TOKEN
         }
         r = requests.get(url_debug_token, params=params)
-        dict_debug_token = r.jsoin()
+        dict_debug_token = r.json()
         USER_ID = dict_debug_token['data']['user_id']
 
         # Authenticate with only FB ID then return to index page
