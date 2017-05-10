@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'member'
 urlpatterns = [
-    url(r'^login/$', views.login, name='login'),
-    url(r'^logout/$', views.logout, name='logout'),
-    url(r'^login/facebook/$', views.login_facebook, name='login_facebook')
+    url(r'^signin/$', views.signin, name='signin'),
+    url(r'^signout/$', views.signout, name='signout'),
+    url(r'^signin/facebook/$', views.signin_facebook, name='signin_facebook')
 ]

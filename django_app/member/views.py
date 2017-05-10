@@ -1,5 +1,5 @@
 import requests
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
 from config import settings
@@ -7,19 +7,19 @@ from config import settings
 APP_ID = settings.config['facebook']['app_id']
 
 
-def login(request):
+def signin(request):
     context = {
         'app_id': APP_ID,
     }
     return render(request, 'member/login.html', context)
 
 
-def logout(request):
-    logout(request)
+def signout(request):
+    signout(request)
     return redirect('index')
 
 
-def login_facebook(request):
+def signin_facebook(request):
     REDIRECT_URI = 'http://localhost:8080/member/login/facebook/'
     SECRET_CODE = settings.config['facebook']['secret_code']
     APP_ACCESS_TOKEN = '{app_id}|{secret_code}'.format(
