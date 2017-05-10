@@ -104,6 +104,11 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'member.backends.FacebookBackend',
+]
+
 AUTH_USER_MODEL = 'member.MyUser'
 
 # Password validation
