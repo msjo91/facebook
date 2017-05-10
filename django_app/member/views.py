@@ -1,5 +1,6 @@
 import requests
-from django.shortcuts import render
+from django.contrib.auth import authenticate
+from django.shortcuts import render, redirect
 
 from config import settings
 
@@ -11,6 +12,11 @@ def login(request):
         'app_id': APP_ID,
     }
     return render(request, 'member/login.html', context)
+
+
+def logout(request):
+    logout(request)
+    return redirect('index')
 
 
 def login_facebook(request):
@@ -49,3 +55,7 @@ def login_facebook(request):
         r = requests.get(url_debug_token, params=params)
         dict_debug_token = r.jsoin()
         USER_ID = dict_debug_token['data']['user_id']
+
+        # Authenticate with only FB ID
+        user = authenticate(facebook_id=USER_ID)
+        login(request, user)
