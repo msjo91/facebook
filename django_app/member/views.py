@@ -78,7 +78,7 @@ def signin_facebook(request):
         dict_user_info = r.json()
         pprint('USER INFO :\n{}'.format(dict_user_info))
 
-        # Authenticate with only FB ID then return to index page
-        user = authenticate(facebook_id=USER_ID)
+        # Authenticate then return to index page
+        user = authenticate(facebook_id=USER_ID, extra_fields=dict_user_info)
         login(request, user)
         return redirect('index')
