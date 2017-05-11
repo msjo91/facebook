@@ -7,6 +7,17 @@
   <title>Facebook OAuth</title>
 </head>
 <body>
+  <div>
+    {% if user.is_authenticated %}
+    <div>
+      <img src="{{ MEDIA_URL }}{{ user.img_profile }}" alt="" width="100px">
+      <span>{{ user }} is signed in.</span>
+      <a href="{% url 'member:signout' %}">Sign Out</a>
+    </div>
+    {% else %}
+    <a href="{% url 'member:signin' %}">Sign In</a>
+    {% endif %}
+  </div>
   {% block content %}
   {% endblock %}
 </body>

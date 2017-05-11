@@ -3,14 +3,12 @@
 {% block content %}
 <div class="index-container">
   <h1>Index Page</h1>
+  <h3>Test run for Facebook OAuth Sign-in</h3>
   {% if user.is_authenticated %}
-  <div>
-    <img src="{{ MEDIA_URL }}{{ user.img_profile }}" alt="" width="100px">
-    <span>{{ user }} is signed in.</span>
-    <a href="{% url 'member:signout' %}">Sign Out</a>
-  </div>
+  <p>It works!</p>
   {% else %}
-  <a href="{% url 'member:signin' %}">Sign In</a>
+  <p>Try signing in.</p>
+  <p>Hope it works.</p>
   {% endif %}
 </div>
 {% endblock %}
