@@ -20,17 +20,17 @@ class MyUser(AbstractUser):
 
     def __str__(self):
         return '{}{}'.format(
+            self.first_name,
             self.last_name,
-            self.first_name
         )
 
-    # CHOICES_USER_TYPE = (
-    #     ('django', 'Django'),
-    #     ('facebook', 'Facebook'),
-    # )
-    # social_id = models.CharField(max_length=100, blank=True)
-    # user_type = models.CharField(
-    #     max_length=15,
-    #     choices=CHOICES_USER_TYPE,
-    #     default=CHOICES_USER_TYPE[0][0]
-    # )
+        # CHOICES_USER_TYPE = (
+        #     ('django', 'Django'),
+        #     ('facebook', 'Facebook'),
+        # )
+        # social_id = models.CharField(max_length=100, blank=True)
+        # user_type = models.CharField(
+        #     max_length=15,
+        #     choices=CHOICES_USER_TYPE,
+        #     default=CHOICES_USER_TYPE[0][0]
+        # )
