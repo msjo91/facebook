@@ -10,7 +10,7 @@
   <div>
     {% if user.is_authenticated %}
     <div>
-      <img src="{{ MEDIA_URL }}{{ user.img_profile }}" alt="" width="100px">
+      <img src="{{ MEDIA_URL }}{{ user.img_profile }}" alt="" width="50px">
       <span>{{ user }} is signed in.</span>
       <a href="{% url 'member:signout' %}">Sign Out</a>
     </div>
