@@ -16,6 +16,14 @@ from django.db import models
 
 
 class MyUser(AbstractUser):
+    img_profile = models.ImageField(upload_to='user', blank=True)
+
+    def __str__(self):
+        return '{}{}'.format(
+            self.last_name,
+            self.first_name
+        )
+
     # CHOICES_USER_TYPE = (
     #     ('django', 'Django'),
     #     ('facebook', 'Facebook'),
@@ -26,4 +34,3 @@ class MyUser(AbstractUser):
     #     choices=CHOICES_USER_TYPE,
     #     default=CHOICES_USER_TYPE[0][0]
     # )
-    img_profile = models.ImageField(upload_to='user', blank=True)

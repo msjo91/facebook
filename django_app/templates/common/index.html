@@ -5,7 +5,7 @@
   <h1>Index Page</h1>
   {% if user.is_authenticated %}
   <div>
-    <span>{{ user.username }} has signed in.</span>
+    <span>{{ user }} is signed in.</span>
     <a href="{% url 'member:signout' %}">Sign Out</a>
   </div>
   {% else %}
