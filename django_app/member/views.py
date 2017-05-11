@@ -1,5 +1,7 @@
+from pprint import pprint
+
 import requests
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 from config import settings
@@ -15,12 +17,12 @@ def signin(request):
 
 
 def signout(request):
-    signout(request)
+    logout(request)
     return redirect('index')
 
 
 def signin_facebook(request):
-    REDIRECT_URI = 'http://localhost:8080/member/login/facebook/'
+    REDIRECT_URI = 'http://localhost:8080/member/signin/facebook/'
     SECRET_CODE = settings.config['facebook']['secret_code']
     APP_ACCESS_TOKEN = '{app_id}|{secret_code}'.format(
         app_id=APP_ID,
@@ -45,6 +47,7 @@ def signin_facebook(request):
         r = requests.get(url_request_access_token, params=params)
         dict_access_token = r.json()
         USER_ACCESS_TOKEN = dict_access_token['access_token']
+        print('USER ACCESS TOKEN : {}'.format(USER_ACCESS_TOKEN))
 
         # Authenticate token using user_access_token and app_access_token
         url_debug_token = 'https://graph.facebook.com/debug_token'
@@ -55,6 +58,25 @@ def signin_facebook(request):
         r = requests.get(url_debug_token, params=params)
         dict_debug_token = r.json()
         USER_ID = dict_debug_token['data']['user_id']
+        print('USER ID : {}'.format(USER_ID))
+
+        # Ask FB Graph API for user information
+        url_api_user = 'https://graph.facebook.com/{user_id}'.format(user_id=USER_ID)
+        fields = [
+            'id',
+            'first_name',
+            'last_name',
+            'gender',
+            'picture',
+            'email'
+        ]
+        params = {
+            'fields': ', '.join(fields),
+            'access_token': USER_ACCESS_TOKEN,
+        }
+        r = request.get(url_api_user, params)
+        dict_user_info = r.json()
+        pprint('USER INFO :\n{}'.format(dict_user_info))
 
         # Authenticate with only FB ID then return to index page
         user = authenticate(facebook_id=USER_ID)
