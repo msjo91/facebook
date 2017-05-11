@@ -74,7 +74,7 @@ def signin_facebook(request):
             'fields': ', '.join(fields),
             'access_token': USER_ACCESS_TOKEN,
         }
-        r = request.get(url_api_user, params)
+        r = requests.get(url_api_user, params)
         dict_user_info = r.json()
         pprint('USER INFO :\n{}'.format(dict_user_info))
 
