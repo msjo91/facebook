@@ -5,6 +5,7 @@
   <h1>Index Page</h1>
   {% if user.is_authenticated %}
   <div>
+    <img src="{{ MEDIA_URL }}{{ user.img_profile }}" alt="" width="100px">
     <span>{{ user }} is signed in.</span>
     <a href="{% url 'member:signout' %}">Sign Out</a>
   </div>
